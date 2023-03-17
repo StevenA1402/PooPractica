@@ -22,7 +22,7 @@
 //         const info = `Nombre:   ${this.nombre} \nCedula:  ${this.cedula}`
 //         return info
 //     }
-        
+
 // }
 
 // const santiago = new Persona('santiago', 70, 1.65, 19, 1097488058)
@@ -30,60 +30,104 @@
 // const samuel = new Persona('samuel', 50, 1.50, 18)
 // const personas = {
 //     santiago,
-//     steven, 
+//     steven,
 //     samuel
 // }
 
-
 // console.log(santiago.info());
-let nombre = document.getElementById('Nombre');
-let apellidos = document.getElementById('Apellido');
-let fecha = document.getElementById('fecha');
-let cedula = document.getElementById('cedula');
-let boton = document.getElementById('boton');
-let validar = document.getElementById('validar')
-const resultado = []
 
- class Persona {
-    nombre
-    apellidos
-    cedula
-    edad
-    fechanacimiento
+//NUEVO EJERCICIO
+let nombre = document.getElementById("Nombre");
+let apellidos = document.getElementById("Apellido");
+let fecha = document.getElementById("fecha");
+let cedula = document.getElementById("cedula");
+let boton = document.getElementById("boton");
+let validar = document.getElementById("validar");
+let formulario = document.getElementById("formulario");
+let nombrecompleto = document.getElementById("nombrecompleto");
+let fechacumpleaños = document.getElementById("fechacumpleaños");
 
-    constructor(apellidos, cedula, edad, fechanacimiento, nombre){
-        this.nombre = nombre
-        this.apellidos = apellidos
-        this.cedula = cedula
-        this.edad = edad
-        this.fechanacimiento = fechanacimiento
-    }
 
-    nombreCompleto(){
 
-    }
 
-    cumpleaños(){
+const datosLocal = []
+const resultado = [];
 
-    }
+class Persona {
+  nombre;
+  apellidos;
+  cedula;
+  edad;
+  fechanacimiento;
 
- }
+  constructor(apellidos, cedula, edad, fechanacimiento, nombre) {
+    this.nombre = nombre;
+    this.apellidos = apellidos;
+    this.cedula = cedula;
+    this.edad = edad;
+    this.fechanacimiento = fechanacimiento;
+  }
 
- boton.addEventListener("click", () => {
-    let fechaActual = new Date()
-    let fechaNacimiento = new Date(fecha.value)
-    edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear()
-    const mostrar = new Persona(apellidos.value, cedula.value,edad, fecha.value   ,nombre.value)
-    if(apellidos.value != "" && cedula.value != "" && edad != "" && fecha.value != "" && nombre.value != "" ){
-        resultado.push(mostrar)
-    }else{
-            
-        validar.innerHTML = `NGRESE DATOS EN LOS CAMPOS`
-    }
-    console.log(mostrar);
 
+
+  nombreCompleto() {
+    return this.nombre + "" + this.apellidos
     
+  }
 
- })
+  cumpleaños(hola) {
+    let date = new Date()
+    let mesActual = date.getMonth() + 1
+    let diaActual = date.getDate()
+    let mesNacimiento = parseFloat(hola.slice(5, 8)) 
+    let diaNacimiento = parseFloat(hola.slice(8, 11))
+    if(mesActual == mesNacimiento && diaActual == diaNacimiento){
+        return "si"
+    }else{
+        return "no"
+    }
+  }
+}
 
+
+function cargar (e) {
+    
+}
+
+function noRefrescar(e) {
+    e.preventDefault()
+} 
+
+formulario.addEventListener('submit' , noRefrescar )
+
+boton.addEventListener("click", () => {
+  
+  let fechaActual = new Date();
+  let fechaNacimiento = new Date(fecha.value);
+  edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+  const mostrar = new Persona(
+    apellidos.value,
+    cedula.value,
+    edad,
+    fecha.value,
+    nombre.value
+  );
+  if (
+    apellidos.value != "" &&
+    cedula.value != "" &&
+    edad != "" &&
+    fecha.value != "" &&
+    nombre.value != ""
+  ) {
+    resultado.push(mostrar);
+
+  } else {
+    validar.innerHTML = `<p class="text-center">INGRESE DATOS EN LOS CAMPOS</p>`;
+  }
+nombrecompleto.innerHTML = `${mostrar.nombreCompleto()}`
+fechacumpleaños.innerHTML = `${mostrar.cumpleaños(fecha.value)}`
+localStorage.setItem('lista', JSON.stringify(mostrar))
+
+
+});
 

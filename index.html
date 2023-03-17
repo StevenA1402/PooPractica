@@ -10,14 +10,25 @@
 </head>
 
 <body>
-    <main class="flex items-center justify-center w-full h-screen p-[5rem] bg-gray-900	">
-        <div id="formulario" class="flex flex-col gap-[1rem] text-white font-bold border-[0.1rem] border-solid p-[1rem] " >
-            Nombre: <input class="text-black" type="text" id="Nombre">
-            Apellido: <input class="text-black" type="text" id="Apellido">
-            Fecha Nacimiento: <input class="text-black" type="date" id="fecha">
-            Cedula: <input class="text-black" type="number" id="cedula">
-            <button value="cumpleañosfeli()" id="boton" class="bg-white text-black">Guardar</button>
-            <p id="validar"></p>
+    <main id="contenido" class="flex items-center justify-start w-full h-screen p-[5rem] bg-gray-900	">
+        <div id="formulario">
+            <form action="" id="formulario"
+                class="flex flex-col gap-[1rem] text-white font-bold border-[0.1rem] border-solid p-[1rem] ">
+                Nombre: <input class="text-black" type="text" id="Nombre" required>
+                Apellido: <input class="text-black" type="text" id="Apellido" required>
+                Fecha Nacimiento: <input class="text-black" type="date" id="fecha" required>
+                Cedula: <input class="text-black" type="number" id="cedula" required>
+                <button value="cumpleañosfeli()" id="boton" class="bg-white text-black">Guardar</button>
+                <p id="validar"></p>
+                <div class="flex text-white font bold text-center ">
+                    <div class="border-black border-[0.1rem]">Nombre completo
+                        <div id="nombrecompleto" class="border-black border-[0.1rem] w-[20rem] h-[10rem]"></div>
+                    </div>
+                    <div class="border-black border-[0.1rem]">Cumpleaños
+                        <div id="fechacumpleaños" class="border-black border-[0.1rem] w-[20rem] h-[10rem]"></div>
+                    </div>
+                </div>
+            </form>
         </div>
     </main>
 </body>
