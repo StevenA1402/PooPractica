@@ -9,12 +9,11 @@ function info() {
         })
       );
     }
-  
     const carta = document.getElementById('carta');
+    let cedulita = localStorage.getItem('cedulas')
+    let nuevolistado = lista.find(e => e.cedula == cedulita)
+    console.log(nuevolistado);
   
-    carta.innerHTML = `<div class="p-[10rem]" >Nombre: ${lista.nombre}\n<br>
-    Apellido: ${lista.apellidos}<br>
-    Cedula: ${lista.cedula}`;
   }
   
   window.addEventListener("load", info);

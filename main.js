@@ -37,6 +37,9 @@
 // console.log(santiago.info());
 
 //NUEVO EJERCICIO
+
+
+
 let nombre = document.getElementById("Nombre");
 let apellidos = document.getElementById("Apellido");
 let fecha = document.getElementById("fecha");
@@ -46,12 +49,17 @@ let validar = document.getElementById("validar");
 let formulario = document.getElementById("formulario");
 let nombrecompleto = document.getElementById("nombrecompleto");
 let fechacumpleaños = document.getElementById("fechacumpleaños");
+let identificacion= document.getElementById("identificacion"
+  );
+
 
 
 
 
 const datosLocal = []
 const resultado = [];
+const personas = []
+const cedulas = []
 
 class Persona {
   nombre;
@@ -82,7 +90,12 @@ class Persona {
     let mesNacimiento = parseFloat(hola.slice(5, 8)) 
     let diaNacimiento = parseFloat(hola.slice(8, 11))
     if(mesActual == mesNacimiento && diaActual == diaNacimiento){
-        return "si"
+      Swal.fire(
+        'Feliz cumpleaños!',
+        'Espero que tengas un excelente dia!',
+        'success'
+      )
+      return "si"
     }else{
         return "no"
     }
@@ -90,15 +103,29 @@ class Persona {
 }
 
 
-function cargar (e) {
-    
-}
 
 function noRefrescar(e) {
     e.preventDefault()
 } 
 
 formulario.addEventListener('submit' , noRefrescar )
+
+
+
+buscar.addEventListener('click', () => {
+
+  cedulas.forEach(e => {
+    if(e == identificacion.value){
+      location.href = 'lista.html'
+      return e
+
+    }else{
+      alert('pailas')
+    }
+
+  });
+  
+})
 
 boton.addEventListener("click", () => {
   
@@ -124,10 +151,20 @@ boton.addEventListener("click", () => {
   } else {
     validar.innerHTML = `<p class="text-center">INGRESE DATOS EN LOS CAMPOS</p>`;
   }
+
 nombrecompleto.innerHTML = `${mostrar.nombreCompleto()}`
 fechacumpleaños.innerHTML = `${mostrar.cumpleaños(fecha.value)}`
-localStorage.setItem('lista', JSON.stringify(mostrar))
 
+localStorage.setItem('lista', JSON.stringify(personas))
+personas.push(mostrar)
+console.log(personas);
+
+
+
+localStorage.setItem('cedulas', `${cedula.value}  `  )
+
+cedulas.push(cedula.value)
+console.log(cedulas);
 
 });
 
