@@ -9,10 +9,8 @@ function info() {
         })
       );
     }
-    const carta = document.getElementById('carta');
-    let cedulita = localStorage.getItem('cedulas')
-    let nuevolistado = lista.find(e => e.cedula == cedulita)
-    console.log(nuevolistado);
+    console.log(lista[0].nombre);
+    carta.innerHTML += `${lista[0].nombre}`
   
   }
   

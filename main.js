@@ -159,6 +159,10 @@ localStorage.setItem('lista', JSON.stringify(personas))
 personas.push(mostrar)
 console.log(personas);
 
+setTimeout(function() {
+  localStorage.setItem('lista', JSON.stringify(personas));
+}, 100);
+
 
 
 localStorage.setItem('cedulas', `${cedula.value}  `  )
